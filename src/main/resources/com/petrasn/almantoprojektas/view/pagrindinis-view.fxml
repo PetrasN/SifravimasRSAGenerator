@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petrasn.almantoprojektas.controllers.PagrindinisController">
+   <top>
+      <MenuBar prefHeight="25.0" prefWidth="419.0" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="menuClose" mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <right>
+      <AnchorPane prefHeight="380.0" prefWidth="220.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="23.0" layoutY="14.0" text="Kontaktai" />
+            <ScrollPane layoutX="10.0" layoutY="39.0" prefHeight="322.0" prefWidth="195.0">
+               <content>
+                  <VBox fx:id="checkBoxes" prefHeight="311.0" prefWidth="185.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <AnchorPane prefHeight="380.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <TabPane fx:id="tabPane" prefHeight="380.0" prefWidth="381.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab onSelectionChanged="#onKeistiRodyma" text="Kontaktų valdymas">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="365.0">
+                           <children>
+                              <Button layoutX="14.0" layoutY="314.0" mnemonicParsing="false" onAction="#onActionKontaktai" prefHeight="25.0" prefWidth="97.0" text="Vykdyti" />
+                              <ImageView fx:id="imgVisitCard" fitHeight="98.0" fitWidth="95.0" layoutX="14.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/VisitCardL.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="131.0" layoutY="262.0" text="Mano vizitinė kortelė" />
+                              <Accordion layoutX="68.0" layoutY="101.0" />
+                              <Label layoutX="132.0" layoutY="319.0" text="Ištrinti kontaktą iš kontaktų sąrašo" />
+                              <Label fx:id="lbHelp" layoutX="14.0" layoutY="14.0" prefHeight="213.0" prefWidth="358.0" textFill="BLUE" wrapText="true">
+                                 <font>
+                                    <Font name="Segoe Print" size="12.0" />
+                                 </font>
+                              </Label>
+
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab onSelectionChanged="#onKeistiRodyma" text="Šifravimas">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="400.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="26.0" text="Parinkite failą, kurį norėsite užšifruoti" />
+                              <TextField fx:id="tfFilePatch" editable="false" layoutX="15.0" layoutY="50.0" prefHeight="25.0" prefWidth="317.0" />
+                              <Button layoutX="332.0" layoutY="50.0" mnemonicParsing="false" onAction="#onChoosefile" text="..." />
+                              <Label layoutX="15.0" layoutY="92.0" text="Parinkite direktorija, kur norėsite patalpinti šifruotą failą" />
+                              <TextField fx:id="tfDirectoryPatch" editable="false" layoutX="15.0" layoutY="116.0" prefHeight="25.0" prefWidth="318.0" />
+                              <Button layoutX="333.0" layoutY="116.0" mnemonicParsing="false" onAction="#onChooseDirektory" text="..." />
+                              <Label layoutX="17.0" layoutY="176.0" text="Parinkite bent vieną adresą iš kontaktų sąrašo" />
+                              <Button layoutX="299.0" layoutY="276.0" mnemonicParsing="false" onAction="#onEncrypt" text="šifruoti" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab onSelectionChanged="#onKeistiRodyma" text="Dešifravimas">
+                      <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="400.0">
+                              <children>
+                                  <Label layoutX="15.0" layoutY="26.0" text="Parinkite failą, kurį norėsite dešifruoti" />
+                                  <TextField fx:id="tfFilePatchdecrypt" editable="false" layoutX="15.0" layoutY="50.0" prefHeight="25.0" prefWidth="317.0" />
+                                  <Button layoutX="332.0" layoutY="50.0" mnemonicParsing="false" onAction="#onChoosefiledecrypt" text="..." />
+                                  <Label layoutX="15.0" layoutY="92.0" prefHeight="17.0" prefWidth="323.0" text="Parinkite direktorija, kur norėsite patalpinti dešifruotą failą" />
+                                  <TextField fx:id="tfDirectoryPatchdecrypt" editable="false" layoutX="15.0" layoutY="116.0" prefHeight="25.0" prefWidth="318.0" />
+                                  <Button layoutX="333.0" layoutY="116.0" mnemonicParsing="false" onAction="#onChooseDirektorydecrypt" text="..." />
+                                  <Button layoutX="299.0" layoutY="276.0" mnemonicParsing="false" onAction="#onDecrypt" text="Dešifruoti" />
+                              </children></AnchorPane>
+                      </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

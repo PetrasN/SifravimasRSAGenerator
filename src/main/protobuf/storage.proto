@@ -1,0 +1,10 @@
+syntax = "proto3";
+package protobuf;
+option java_package = "com.petrasn.almantoprojektas";
+option java_outer_classname = "StorageProto";
+    message Storage{
+   string userName = 1;
+     string  hashedPassword = 2;
+      bytes publicKey = 3;
+     map<string,bytes> visitCards =4;
+    }

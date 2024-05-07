@@ -1,0 +1,15 @@
+syntax = "proto3";
+package protobuf;
+option java_package = "com.petrasn.almantoprojektas";
+option java_outer_classname = "CryptoProto";
+message Crypto{
+  string senderName =1;// kas siuntė
+  string fileName = 2;// tam kad galėtume atstayti originalaus failo vardą
+  bytes  encryptedContentWithSecretKey = 3;// užšifruotas failas su  atsitiktiniu slaptu šifravimo raktu
+  bytes encyptIVWithSenderPrivateKey= 4;// užšifruotas inicialinis vektorius su siuntėjo privačiuoju raktu,
+  // tai apsaugos nuo men-in midle atakos, jis nėra slaptas parametras, jį gali žinoti bet kas, reikalingas,
+  // kad vienodi blokai nesišifruotų vienodai gavėjas iššifruos jį mano viešu raktu, kuris jam žinomas
+  map<string,bytes> targetNameWrapSecretKeyMap =5;// mapas( Sąrašas duomenų tipo: raktas- reikšmė) kurio raktas- gavėjo vardas,
+  // reikšmė - slaptas šifravimo raktas užšifruotas gavėjo viešu raktu
+  // gavėjas prabega per visą mapą, randa savo vardą ir gautą reikšme iššifruoja su savo privači raktu, tai gauna slaptą šifravimo raktą
+}
